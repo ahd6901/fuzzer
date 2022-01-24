@@ -5,7 +5,7 @@ image:
 
 before_script:
   # don't change these either
-
+  - pip install mechanicalsoup
   - chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
   - echo '[+] Starting mysql...'
   - service mysql start
