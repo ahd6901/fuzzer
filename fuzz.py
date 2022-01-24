@@ -13,7 +13,6 @@ args = parser.parse_args()
 
 #input validation
 if args.action == 'discover' or args.action == 'test':
-    print('custom authentication:'+ args.custom_auth)
     pass
 else:
     exit
