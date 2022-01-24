@@ -5,7 +5,7 @@ image:
 
 before_script:
   # don't change these either
-  - pip install mechanicalsoup
+  - pip3 install mechanicalsoup
   - chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
   - echo '[+] Starting mysql...'
   - service mysql start
@@ -27,6 +27,6 @@ fuzzrunner:
 
 #    - ruby fuzz.rb discover http://localhost/ --custom-auth=dvwa
 #    - ruby fuzz.rb discover http://127.0.0.1/fuzzer-tests
-#    - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa
-#    - python3 fuzz.py discover http://127.0.0.1/fuzzer-tests
+    - python fuzz.py discover http://localhost/ --custom-auth=dvwa
+    - python fuzz.py discover http://127.0.0.1/fuzzer-tests
   stage: test
