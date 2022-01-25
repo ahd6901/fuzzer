@@ -1,6 +1,7 @@
 
 import mechanicalsoup
 import argparse
+import time
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
         exit
 
     # Connect
-    browser = mechanicalsoup.StatefulBrowser()
+    browser = mechanicalsoup.StatefulBrowser(user_agent='MechanicalSoup')
 
     # Go to setup.php, submit new creat/set
     browser.open(args.url + 'dvwa/setup.php')
@@ -26,8 +27,9 @@ def main():
 
     # Navigate to url, It should redirect to login.php
     browser.open(args.url + 'dvwa/')
+    time.sleep(3)
     # Submit login form
-    form = browser.select_form('form[action="login.php"]')
+    form = browser.select_form('form')
     browser['username'] = 'admin'
     browser['password'] = 'password'
     browser.submit_selected()
