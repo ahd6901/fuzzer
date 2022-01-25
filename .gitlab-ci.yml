@@ -16,7 +16,8 @@ fuzzrunner:
     # here is where you can write your commands to run your fuzzer or any custom setup commands
 
     - echo "hello class"
-    - python fuzz.py discover http://127.0.0.1/ --custom-auth=dvwa
+    - python fuzz.py discover http://localhost/ --custom-auth=dvwa
+
     # need some example files for vectors and words? These are on the image
 
 #    - cat /words.txt
@@ -28,7 +29,6 @@ fuzzrunner:
 
 #    - ruby fuzz.rb discover http://localhost/ --custom-auth=dvwa
 #    - ruby fuzz.rb discover http://127.0.0.1/fuzzer-tests
-#     - python fuzz.py discover http://localhost/ --custom-auth=dvwa
-#
+
 #     - python fuzz.py discover http://127.0.0.1/fuzzer-tests
   stage: test

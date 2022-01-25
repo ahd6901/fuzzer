@@ -1,4 +1,4 @@
-import requests
+
 import mechanicalsoup
 import argparse
 
@@ -18,7 +18,7 @@ def main():
         exit
 
     # Connect
-    browser = mechanicalsoup.StatefulBrowser(user_agent='MechanicalSoup')
+    browser = mechanicalsoup.StatefulBrowser()
 
     # Go to setup.php, submit new creat/set
     browser.open(args.url + 'dvwa/setup.php')
@@ -41,7 +41,6 @@ def main():
     # Return to main page. Print out its HTML to console
     browser.open(args.url + 'dvwa/')
     print(str(browser.get_current_page()))
-    browser.launch_browser()
 
 
 if __name__ == '__main__':
