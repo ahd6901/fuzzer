@@ -1,9 +1,11 @@
-Swen331 Fuzzer Project
+#Swen331 Fuzzer Project
 Contributor: Amy Do
+
 Installation:
    Python: 3.*
    pip3 install mechanicalsoup
    pip3 install argparse
+
 Command:
 python3 fuzz.py [discover|test] URL OPTIONS
 
