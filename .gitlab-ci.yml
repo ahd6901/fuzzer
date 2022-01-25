@@ -8,7 +8,7 @@ before_script:
   - pip install mechanicalsoup
   - chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
   - echo '[+] Starting mysql...'
-  - service mysql start
+  - service mysql start q
   - echo '[+] Starting apache'
   - service apache2 start
 fuzzrunner:
