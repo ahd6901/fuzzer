@@ -23,7 +23,8 @@ def main():
 
     # Go to setup.php, submit new creat/set
     browser.open(args.url + 'setup.php')
-    browser.post(args.url + 'setup.php#')
+    browser.select_form()
+    browser.submit_selected()
 
     # Navigate to url, It should redirect to login.php
     browser.open(args.url)
