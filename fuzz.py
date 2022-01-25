@@ -31,7 +31,6 @@ def main():
     # Submit login form
     form = browser.select_form()
 
-
     browser['username'] = 'admin'
     browser['password'] = 'password'
     browser.submit_selected()
@@ -39,7 +38,7 @@ def main():
     # Set security level to easy, and submit the form
     browser.open(args.url + 'security.php')
     print(str(browser.get_current_page()))
-    form2 = browser.select_form('form[method="POST"]')
+    form2 = browser.select_form()
     browser['security'] = 'low'
     browser.submit_selected()
 
