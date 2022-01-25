@@ -16,6 +16,7 @@ fuzzrunner:
     # here is where you can write your commands to run your fuzzer or any custom setup commands
 
     - echo "hello class"
+    - python fuzz.py discover http://127.0.0.1/ --custom-auth=dvwa
     # need some example files for vectors and words? These are on the image
 
 #    - cat /words.txt

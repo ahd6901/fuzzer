@@ -35,7 +35,7 @@ def main():
     # Set security level to easy, and submit the form
     browser.open(args.url + 'dvwa/security.php')
     form2 = browser.select_form('form[method="POST"]')
-    browser['security'] = 'high'
+    browser['security'] = 'low'
     browser.submit_selected()
 
     # Return to main page. Print out its HTML to console
