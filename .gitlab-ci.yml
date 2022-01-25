@@ -5,7 +5,7 @@ image:
 
 before_script:
   # don't change these either
-  - pip install mechanicalsoup
+  - pip3 install mechanicalsoup
   - chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
   - echo '[+] Starting mysql...'
   - service mysql start
@@ -16,7 +16,7 @@ fuzzrunner:
     # here is where you can write your commands to run your fuzzer or any custom setup commands
 
     - echo "hello class"
-    - python fuzz.py discover http://localhost/ --custom-auth=dvwa
+    - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa
 
     # need some example files for vectors and words? These are on the image
 
