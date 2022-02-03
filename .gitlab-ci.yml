@@ -21,6 +21,7 @@ fuzzrunner:
     - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa --common-words=words.txt --extensions=extensions.txt
     - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa --common-words=words.txt
 
+
     # need some example files for vectors and words? These are on the image
 
 #    - cat /words.txt
