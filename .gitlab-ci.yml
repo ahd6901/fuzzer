@@ -17,6 +17,7 @@ fuzzrunner:
 
     - echo "hello class"
     #- python3 fuzz.py discover http://localhost/ --custom-auth=dvwa
+    - python3 fuzz.py discover http://localhost/ --common-words=words.txt
     - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa --common-words=words.txt --extensions=extensions.txt
     - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa --common-words=words.txt
 
