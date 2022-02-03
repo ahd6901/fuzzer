@@ -22,7 +22,14 @@ def main():
     else:
         exit()
 
-    # Checks, args, gets word_list and extension_list
+    # check for custom-auth, gets Browser
+    if args.custom_auth is None:
+        browser = mechanicalsoup.StatefulBrowser()
+        browser.open(args.url)
+    else:
+        browser = login(args.url)
+
+    # Gets word_list and extension_list
     if args.common_words is None:
         exit()
     word_list = read_file_content(args.common_words)
@@ -31,10 +38,7 @@ def main():
     else:
         extension_list = read_file_content(args.extensions)
 
-    #login
-    browser = login(args.url)
-
-    #discover
+    # discover
     discover(browser, args.url, word_list, extension_list)
 
 
