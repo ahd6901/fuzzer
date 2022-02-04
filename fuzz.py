@@ -1,6 +1,8 @@
+from urllib.parse import urlparse, urljoin
+
 import mechanicalsoup
 import argparse
-from Discrover import discover
+from Discover import discover
 
 
 def main():
@@ -38,18 +40,20 @@ def main():
     else:
         extension_list = read_file_content(args.extensions)
 
-    # discover
+    # discover feature
     discover(browser, args.url, word_list, extension_list)
 
 
 def login(url):
     browser = mechanicalsoup.StatefulBrowser(user_agent='MechanicalSoup')
     # Go to setup.php, submit new creat/set
-    browser.open(url + 'setup.php')
+
+    browser.open(urljoin(url, 'setup.php'))
     browser.select_form()
     browser.submit_selected()
 
     # Navigate to url, It should redirect to login.php
+
     browser.open(url)
 
     # Submit login form
@@ -59,13 +63,14 @@ def login(url):
     browser.submit_selected()
 
     # Set security level to easy, and submit the form
-    browser.open(url + 'security.php')
+    browser.open(urljoin(url, 'security.php'))
     form2 = browser.select_form()
     browser['security'] = 'low'
     browser.submit_selected()
 
     # Return to main page. Print out its HTML to console
     browser.open(url)
+
     print("Logged into DVWA.")
 
     return browser

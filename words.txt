@@ -1,5 +1,3 @@
 admin
-security
 login
-setup
-instructions
+security
