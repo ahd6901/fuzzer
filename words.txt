@@ -1,3 +1,6 @@
 admin
 login
 security
+hello
+message
+setup

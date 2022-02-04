@@ -16,7 +16,7 @@ def discover(browser, url, word_list, extension_list):
     # Display results
     print("Links Discovered:")
     print("********************************************")
-#dfs(browser, url, crawled_links, url)
+    dfs(browser, url, crawled_links, url)
 
     print("Pages Successfully Guessed:")
     print("********************************************")
@@ -31,13 +31,8 @@ def discover(browser, url, word_list, extension_list):
         if res.status_code == 200:
             correct_guesses.add(full_url)
             print(full_url)
-    # traverse newly discover links
+
     all_links = correct_guesses.union(crawled_links)
-    difference_set = correct_guesses.difference(crawled_links)
-#print('new discovery:' + str(difference_set))
-    if len(difference_set) > 0:
-        for i in difference_set:
-            dfs(browser, i, all_links, url)
 
     print("Parsed URLs (from guessed pages and discovered links) ")
     print("********************************************")
@@ -49,12 +44,6 @@ def discover(browser, url, word_list, extension_list):
     for link in all_links:
         parseForm(browser, link)
 
-
-
-
-
-    # for i in inputs:
-    #     print(i['name']+': '+i['value'])
 
     print("Cookies:")
     print('*********************************************************')
