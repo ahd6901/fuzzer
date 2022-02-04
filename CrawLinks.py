@@ -2,19 +2,19 @@ from urllib.parse import urljoin
 
 
 def dfs(browser, current_url, crawled_links, base_url):
-    children_links = get_children_links(browser, current_url, base_url)
+    children_links = get_children_links(browser, crawled_links, base_url)
     crawled_links.add(current_url)
+    print(current_url)
     if len(children_links) != 0:
         for child_link in children_links:
             if child_link in crawled_links:
                 continue
             else:
-
                 browser.open(child_link)
                 dfs(browser, child_link, crawled_links, base_url)
 
 
-def get_children_links(browser, url, base_url):
+def get_children_links(browser, crawled_links, base_url):
     links = []
     raw_links = browser.page.find_all('a', href=True)
 
@@ -28,7 +28,7 @@ def get_children_links(browser, url, base_url):
 
             if browser.page is None:
                 continue
-            if res.status_code == 200:
+            if res.status_code == 200 and absolute_url not in crawled_links:
                 links.append(absolute_url)
 
     return links

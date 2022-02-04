@@ -14,14 +14,12 @@ def discover(browser, url, word_list, extension_list):
 
     # links Crawling
     crawled_links = set({})  # set of crawled_links
-    dfs(browser, url, crawled_links,  url)
+
 
     # Display results
-    print("Links Discovered:" + str(len(crawled_links)))
+    print("Links Discovered:")
     print("********************************************")
-    sorted(crawled_links)
-    for link in crawled_links:
-        print(link)
+    dfs(browser, url, crawled_links, url)
 
     print("Pages Successfully Guessed:")
     print("********************************************")
@@ -41,10 +39,6 @@ def discover(browser, url, word_list, extension_list):
     # TODO
     all_links = correct_guesses.union(crawled_links)
 
-    print('total links: '+ str(len(all_links)))
-    for i in all_links:
-        print(i)
-    parseUrl(browser, url)
 
     print("Discovered Forms")
     print("********************************************")
