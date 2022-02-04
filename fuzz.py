@@ -49,6 +49,7 @@ def login(url):
     # Go to setup.php, submit new creat/set
 
     browser.open(urljoin(url, 'setup.php'))
+    print(str(urljoin(url, 'setup.php')))
     browser.select_form()
     browser.submit_selected()
 

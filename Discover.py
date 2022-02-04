@@ -6,8 +6,6 @@ from ParseURL import parseUrl
 
 def discover(browser, url, word_list, extension_list):
     cookies = browser.get_cookiejar()
-    for i in cookies:
-        print(i.name + ": " + i.value)
     # page guessing
     possible_paths = []
     correct_guesses = set({})
@@ -15,11 +13,10 @@ def discover(browser, url, word_list, extension_list):
     # links Crawling
     crawled_links = set({})  # set of crawled_links
 
-
     # Display results
     print("Links Discovered:")
     print("********************************************")
-    dfs(browser, url, crawled_links, url)
+#dfs(browser, url, crawled_links, url)
 
     print("Pages Successfully Guessed:")
     print("********************************************")
@@ -34,16 +31,30 @@ def discover(browser, url, word_list, extension_list):
         if res.status_code == 200:
             correct_guesses.add(full_url)
             print(full_url)
+    # traverse newly discover links
+    all_links = correct_guesses.union(crawled_links)
+    difference_set = correct_guesses.difference(crawled_links)
+#print('new discovery:' + str(difference_set))
+    if len(difference_set) > 0:
+        for i in difference_set:
+            dfs(browser, i, all_links, url)
+
     print("Parsed URLs (from guessed pages and discovered links) ")
     print("********************************************")
-    # TODO
-    all_links = correct_guesses.union(crawled_links)
+    parseUrl(all_links)
 
 
     print("Discovered Forms")
     print("********************************************")
-    # TODO: page_name
-    # TODO: its input's name and value
+    for link in all_links:
+        parseForm(browser, link)
+
+
+
+
+
+    # for i in inputs:
+    #     print(i['name']+': '+i['value'])
 
     print("Cookies:")
     print('*********************************************************')

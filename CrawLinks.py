@@ -2,15 +2,17 @@ from urllib.parse import urljoin
 
 
 def dfs(browser, current_url, crawled_links, base_url):
+    browser.open(current_url)
     children_links = get_children_links(browser, crawled_links, base_url)
     crawled_links.add(current_url)
+
     print(current_url)
     if len(children_links) != 0:
         for child_link in children_links:
             if child_link in crawled_links:
                 continue
             else:
-                browser.open(child_link)
+
                 dfs(browser, child_link, crawled_links, base_url)
 
 
