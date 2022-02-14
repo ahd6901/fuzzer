@@ -1,10 +1,11 @@
 
 def parseForm(browser,current_url):
     browser.open(current_url)
-    print('************************************************')
-    print('PAGE :'+str(current_url))
+
     forms=browser.page.find_all('form')
     for form in forms:
+        print('************************************************')
+        print('PAGE :' + str(current_url))
         print('FORM INPUTS:')
         print('******************')
         print('* Name * Value  ')
