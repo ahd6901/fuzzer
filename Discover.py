@@ -41,7 +41,7 @@ def discover(browser, url, word_list, extension_list):
 
     print("Discovered Forms")
     print("********************************************")
-    form_list=parseForm(browser, all_links)
+    form_dict = parseForm(browser, all_links)  #form dict with key=URL, value=FORM
 
 
     print("Cookies:")
@@ -49,4 +49,4 @@ def discover(browser, url, word_list, extension_list):
     for i in cookies:
         print(i.name + ": " + i.value)
 
-    return form_list,
+    return form_dict

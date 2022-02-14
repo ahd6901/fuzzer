@@ -75,7 +75,10 @@ def main():
         browser = login(args.url)
 
     # run discover
-    discover(browser, args.url, word_list, extension_list)
+    form_dict = discover(browser, args.url, word_list, extension_list)
+
+    if args.action == 'test':
+        test(browser, form_dict, vectors, sanitized, sensitive, slow)
 
 
 def login(url):

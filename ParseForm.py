@@ -3,8 +3,8 @@ def parseForm(browser, all_links):
     for link in all_links:
         browser.open(link)
         forms = browser.page.find_all('form')
-        if len(forms) > 0:
-            form_list[link] = forms
+
+        form_list[link] = forms
         for form in forms:
             print('************************************************')
             print('PAGE :' + str(link))
