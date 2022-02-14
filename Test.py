@@ -1,4 +1,4 @@
-def test(browser, url, vectors, sanitized_list, sensitive_list, slow_time):
+def test(browser, url, vectors, sanitized_list, sensitive_list, timeout):
     print("*********************************************************")
     print("Testing with vectors...")
     print("This may take a while with a large vectors file...")

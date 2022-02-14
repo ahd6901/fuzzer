@@ -72,7 +72,7 @@ def main():
         browser = mechanicalsoup.StatefulBrowser()
         browser.open(args.url)
     else:
-        browser = login(args.url, )
+        browser = login(args.url)
 
     # run discover
     discover(browser, args.url, word_list, extension_list)

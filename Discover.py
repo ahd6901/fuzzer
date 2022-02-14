@@ -41,11 +41,12 @@ def discover(browser, url, word_list, extension_list):
 
     print("Discovered Forms")
     print("********************************************")
-    for link in all_links:
-        parseForm(browser, link)
+    form_list=parseForm(browser, all_links)
 
 
     print("Cookies:")
     print('*********************************************************')
     for i in cookies:
         print(i.name + ": " + i.value)
+
+    return form_list,
