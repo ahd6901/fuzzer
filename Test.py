@@ -1,4 +1,16 @@
-def test(browser, url, word_list, extension_list):
-    #Number of possible DOS vulnerabilities
-    # #Number of HTTP/Response Code Errors
-    pass
+def test(browser, url, vectors, sanitized_list, sensitive_list, slow_time):
+    print("*********************************************************")
+    print("Testing with vectors...")
+    print("This may take a while with a large vectors file...")
+    #test if it was sanitized (<,>)
+    #sensitive data leak
+    #Number of possible DOS vulnerabilities: (number of response slower than threadhold: seconds=slow/1000 )
+    # Number of HTTP/Response Code Errors(translate to human readable format)
+    print("*************************************")
+    print("*          TEST RESULTS:            *")
+    print("*************************************")
+    print("Number of Unsanitized inputs: ")
+    print("Number of Possible SQL Injection Vulnerabilities: ")
+    print("Number of possible Sensitive Data Leakages: ")
+    print("Number of possible DOS vulnerabilities: ")
+    print("Number of HTTP/Response Code Errors: ")

@@ -72,7 +72,7 @@ def main():
         browser = mechanicalsoup.StatefulBrowser()
         browser.open(args.url)
     else:
-        browser = login(args.url)
+        browser = login(args.url, )
 
     # run discover
     discover(browser, args.url, word_list, extension_list)
@@ -80,7 +80,7 @@ def main():
 
 def login(url):
     browser = mechanicalsoup.StatefulBrowser(user_agent='MechanicalSoup')
-    # Go to setup.php, submit new creat/set
+    # Go to setup.php, submit new create/set
 
     browser.open(urljoin(url, 'setup.php'))
     print(str(urljoin(url, 'setup.php')))
