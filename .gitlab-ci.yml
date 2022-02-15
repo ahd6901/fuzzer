@@ -19,9 +19,10 @@ fuzzrunner:
     #- python3 fuzz.py discover http://localhost/ --custom-auth=dvwa
     - python3 fuzz.py discover http://localhost/ --common-words=words.txt
     - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa --common-words=words.txt --extensions=extensions.txt
-    - python3 fuzz.py discover http://localhost/ --custom-auth=dvwa --common-words=words.txt
     - python3 fuzz.py test http://localhost/ --custom-auth=dvwa --common-words=words.txt --extensions=extensions.txt
-      --vectors=vectors.txt --sensitive=sensitive.txt --sanitized-chars=sanitized.txt --slow=300
+      --vectors=vectors.txt --sensitive=sensitive.txt
+    - python3 fuzz.py test http://localhost/ --custom-auth=dvwa --common-words=words.txt --extensions=extensions.txt
+      --vectors=vectors.txt --sensitive=sensitive.txt --sanitized-chars=sanitized.txt --slow=40
 
     # need some example files for vectors and words? These are on the image
 

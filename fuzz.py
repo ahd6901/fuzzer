@@ -64,11 +64,7 @@ def main():
         if args.slow is None:
             slow = 500
         else:
-            slow= args.slow
-        print("vectors=>:" + str(vectors))
-        print("sanitized=>:" + str(sanitized))
-        print("sensitive=>:" + str(sensitive))
-        print("slow=>:" + str(slow))
+            slow = args.slow
 
     # check for custom-auth, gets Browser
     if args.custom_auth is None:
@@ -80,6 +76,7 @@ def main():
     # run discover
     form_dict = discover(browser, args.url, word_list, extension_list)
 
+    # run test
     if args.action == 'test':
         test(browser, form_dict, vectors, sanitized, sensitive, slow)
 
