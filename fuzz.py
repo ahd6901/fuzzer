@@ -30,7 +30,7 @@ def main():
                                             "that this data is in the application's database (e.g. test data), "
                                             "but is not reported in any response. Required.", type=str)
     parser.add_argument('--slow', help="Number of milliseconds considered when a response is considered 'slow'. "
-                                       "Optional. Default is 500 milliseconds", type=int, default=500)
+                                       "Optional. Default is 500 milliseconds", type=int)
     args = parser.parse_args()
 
     if args.action == 'discover' or args.action == 'test':
@@ -61,11 +61,14 @@ def main():
             print('sensitive chars required')
             exit()
         sensitive = read_file_content(args.sensitive)
-        slow = args.slow
+        if args.slow is None:
+            slow = 500
+        else:
+            slow= args.slow
         print("vectors=>:" + str(vectors))
         print("sanitized=>:" + str(sanitized))
         print("sensitive=>:" + str(sensitive))
-        print("sensitive=>:" + str(slow))
+        print("slow=>:" + str(slow))
 
     # check for custom-auth, gets Browser
     if args.custom_auth is None:
