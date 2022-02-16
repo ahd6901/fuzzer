@@ -12,30 +12,28 @@ def test(browser, form_dict, vectors, sanitized_list, sensitive_list, timeout):
         browser.open(url)
         for form in form_list:
             for vector in vectors:
-                print("====Testing with vector '" + str(vector) + "' ")
-                inputs = form.findAll('input')
-
-                for test_input in inputs:
-                    if test_input.has_attr('name'):
-                        input_type = test_input['name']
-                    elif test_input.has_attr('type'):
-                        input_type = test_input['type']
-                    if input_type == "submit":
-                        value = 'submit'
-                    else:
-                        value = vector
-                # run tests
+                page_inputs = form.find_all("input")
+                for page_input in page_inputs:
+                    if page_input.get("type"):
+                        type = page_input.get("type")
+                        if type != "submit":
+                            if "name" in page_input.attrs:
+                                name = page_input.get("name")
+                            try:
+                                browser.select_form()
+                                browser[name] = vector
+                            except:
+                                pass
                 try:
                     browser.select_form()
-                    browser[input_type] = value
                     res = browser.submit_selected()
                     if not check_response_status(res):
                         failed_status_counter += 1;
                     if not check_dos(res, timeout):
                         dos_counter += 1;
-                    unsanitized_counter += count_unsanitized(res, sanitized_list, vector)
+                    if not is_sanitized(res, sanitized_list, vector):
+                        unsanitized_counter+=1
                     sensitive_counter += count_sensitive(res, sensitive_list)
-
                 except:
                     pass
 
@@ -70,13 +68,13 @@ def check_response_status(res):
     return is_ok
 
 
-def count_unsanitized(res, sanitized_list, vector):
-    counter = 0;
+def is_sanitized(res, sanitized_list, vector):
+    result= True
     for char in sanitized_list:
         if char in vector and char in res.text:
-            print("Character '" + str(char) + "' was not sanitized from input vector '" + str(vector) + "'")
-            counter += 1
-    return counter
+            print("Character '" + str(char) + "' was not sanitized from input vector '" + str(vector))
+            result=False
+    return result
 
 
 def count_sensitive(res, sensitive_list):
